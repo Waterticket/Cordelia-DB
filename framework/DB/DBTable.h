@@ -8,15 +8,10 @@
 #include <vector>
 
 #include "../StringHandler.h";
+#include "TableBase.h";
 
-class DBTable {
+class DBTable : public TableBase{
 public:
-    std::vector< std::string > column_name;
-    std::vector< std::string > column_type; //int, string, etc..
-    std::vector< std::string > column_opt; // PK(primary_key), AI(auto_increment), etc..
-
-    std::vector< std::vector < std::string > > table_tuples; // data
-
     DBTable()
     {
         // empty class
