@@ -10,7 +10,7 @@
 #include "../StringHandler.h";
 #include "TableBase.h";
 
-class DBTable : public TableBase{
+class DBTable : public TableBase {
 public:
     DBTable()
     {
