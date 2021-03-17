@@ -1,0 +1,5 @@
+index,server_name,http_port
+int,string,int
+auto_increment,-,-
+1,"cordelia.dev",80
+2,naver.com,80
