@@ -1,0 +1,3 @@
+C:/Users/Administrator/CLionProjects/cordelia-db/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/Users/Administrator/CLionProjects/cordelia-db/cmake-build-debug/CMakeFiles/cordelia_db.dir
+C:/Users/Administrator/CLionProjects/cordelia-db/cmake-build-debug/CMakeFiles/edit_cache.dir
