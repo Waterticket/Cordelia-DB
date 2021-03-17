@@ -5,10 +5,6 @@
 #ifndef CORDELIA_DB_STRINGHANDLER_H
 #define CORDELIA_DB_STRINGHANDLER_H
 
-#include <vector>
-#include <sstream>
-#include <algorithm>
-
 #define bold(x) "\e[1m" << x << "\e[0m"
 #define italic(x) "\e[3m" << x << "\e[0m"
 #define underline(x) "\e[4m" << x << "\e[24m"
@@ -22,6 +18,10 @@
 #define magenta(x) "\033[35m" << x <<"\033[0m"
 #define cyan(x) "\033[36m" << x <<"\033[0m"
 #define white(x) "\033[37m" << x <<"\033[0m"
+
+#include <vector>
+#include <sstream>
+#include <algorithm>
 
 class StringHandler{
 public:
