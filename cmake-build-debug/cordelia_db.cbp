@@ -89,6 +89,9 @@
 		<Unit filename="C:/Users/Administrator/CLionProjects/cordelia-db/framework/DB/ResultSet.h">
 			<Option target="cordelia_db"/>
 		</Unit>
+		<Unit filename="C:/Users/Administrator/CLionProjects/cordelia-db/framework/DB/TableBase.h">
+			<Option target="cordelia_db"/>
+		</Unit>
 		<Unit filename="C:/Users/Administrator/CLionProjects/cordelia-db/framework/DBHandler.h">
 			<Option target="cordelia_db"/>
 		</Unit>
