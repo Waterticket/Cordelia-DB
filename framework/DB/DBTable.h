@@ -28,7 +28,7 @@ public:
 
         for (int i = 3; i < lines.size(); i++)
         {
-            std::vector< std::string > data = sh.tokenize_getline(lines[i], ',');
+            std::vector< std::string > data = sh.tokenize_getline(trim(lines[i]), ',');
 
             table_tuples.push_back(data);
         }
