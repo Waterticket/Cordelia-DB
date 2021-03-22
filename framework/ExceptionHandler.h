@@ -5,6 +5,7 @@
 #ifndef CORDELIA_DB_EXCEPTIONHANDLER_H
 #define CORDELIA_DB_EXCEPTIONHANDLER_H
 
+#include "Library/color.h";
 #include "StringHandler.h";
 
 #define Exceptions(x,y) ExceptionHandler(x,y,__FUNCTION__,__LINE__,__FILE__)
@@ -23,19 +24,19 @@ public:
         switch(code)
         {
             case E_EXCEPTION:
-                std::cout << red(bold("Exception: ")) << yellow(bold(msg)) << " in " << filename << " " << yellow(bold(callfunc)) << yellow(bold("()")) << " on line " << bold(callline) << std::endl;
+                std::cout << dye::light_red("Exception: ") << dye::yellow(msg) << " in " << filename << " " << dye::yellow(callfunc) << dye::yellow("()") << " on line " << callline << std::endl;
                 break;
 
             case E_ERROR:
-                std::cout << red(bold("Error: ")) << yellow(bold(msg)) << " in " << filename << " " << yellow(bold(callfunc)) << yellow(bold("()")) << " on line " << bold(callline) << std::endl;
+                std::cout << dye::light_red("Error: ") << dye::light_red(msg) << " in " << filename << " " << dye::yellow(callfunc) << dye::yellow("()") << " on line " << callline << std::endl;
                 break;
 
             case E_WARNING:
-                std::cout << yellow(bold("Warning: ")) << magenta(bold(msg)) << " in " << filename << " " << yellow(bold(callfunc)) << yellow(bold("()")) << " on line " << bold(callline) << std::endl;
+                std::cout << dye::yellow("Warning: ") << dye::yellow(msg) << " in " << filename << " " << dye::yellow(callfunc) << dye::yellow("()") << " on line " << callline << std::endl;
                 break;
 
             case E_NOTICE:
-                std::cout << green(bold("Notice: ")) << bold(msg) << " in " << filename << " " << bold(callfunc) << bold("()") << " on line " << bold(callline) << std::endl;
+                std::cout << dye::green("Notice: ") << msg << " in " << filename << " " << callfunc << "()" << " on line " << callline << std::endl;
                 break;
 
             default:
