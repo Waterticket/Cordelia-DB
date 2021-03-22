@@ -5,20 +5,6 @@
 #ifndef CORDELIA_DB_STRINGHANDLER_H
 #define CORDELIA_DB_STRINGHANDLER_H
 
-#define bold(x) "\e[1m" << x << "\e[0m"
-#define italic(x) "\e[3m" << x << "\e[0m"
-#define underline(x) "\e[4m" << x << "\e[24m"
-#define inverse(x) "\e[7m" << x << "\e[27m"
-
-#define black(x) "\033[30m" << x <<"\033[0m"
-#define red(x) "\033[31m" << x <<"\033[0m"
-#define green(x) "\033[32m" << x <<"\033[0m"
-#define yellow(x) "\033[33m" << x <<"\033[0m"
-#define blue(x) "\033[34m" << x <<"\033[0m"
-#define magenta(x) "\033[35m" << x <<"\033[0m"
-#define cyan(x) "\033[36m" << x <<"\033[0m"
-#define white(x) "\033[37m" << x <<"\033[0m"
-
 #include <vector>
 #include <sstream>
 #include <algorithm>
@@ -29,6 +15,7 @@ public:
     std::vector<std::string> tokenize_getline_str(const std::string& data, const std::string delimiter = "");
     std::string erase_str(std::string s, std::string delimiter = "");
     std::string toLower(std::string s);
+    std::string toUpper(std::string s);
 };
 
 std::vector<std::string> StringHandler::tokenize_getline(const std::string& data, const char delimiter) {
@@ -74,21 +61,31 @@ std::string StringHandler::toLower(std::string s) {
     return s;
 }
 
-//앞에 있는 개행 문자 제거
-static inline std::string &ltrim(std::string &s) {
-    s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
+std::string StringHandler::toUpper(std::string s) {
+    std::transform(s.begin(), s.end(), s.begin(),
+                   [](unsigned char c){ return std::toupper(c); });
     return s;
 }
 
-//뒤에 있는 개행 문자 제거
-static inline std::string &rtrim(std::string &s) {
-    s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
-    return s;
+const std::string WHITESPACE = " \n\r\t\f\v";
+
+std::string ltrim(const std::string& s)
+{
+    size_t start = s.find_first_not_of(WHITESPACE);
+    return (start == std::string::npos) ? "" : s.substr(start);
 }
 
-//양쪽 끝의 개행 문자 제거
-static inline std::string &trim(std::string &s) {
-    return ltrim(rtrim(s));
+std::string rtrim(const std::string& s)
+{
+    size_t end = s.find_last_not_of(WHITESPACE);
+    return (end == std::string::npos) ? "" : s.substr(0, end + 1);
+}
+
+std::string trim(const std::string& s)
+{
+    std::string str = rtrim(ltrim(s));
+    str.erase(std::find(str.begin(), str.end(), '\0'), str.end()); // NULL indicator remove
+    return str;
 }
 
 #endif //CORDELIA_DB_STRINGHANDLER_H
