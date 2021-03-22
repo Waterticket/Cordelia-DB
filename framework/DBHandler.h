@@ -74,7 +74,10 @@ private:
             {
                 for (int i = pos_where+1; i < sql_strs.size(); i++)
                 {
+                    if(StrHandler.toUpper(trim(sql_strs[i])) == ("AND")) continue; // AND에 경우 패스 (다음 구문 분석)
+
                     std::vector<std::string> key_val = StrHandler.tokenize_getline(sql_strs[i], '=');
+                    if(key_val.size() < 2) Exceptions(E_ERROR, "delimiter parse failed in `WHERE` syntax");
 
                     search_condition.push_back(std::make_tuple(key_val[0], key_val[1], "="));
                 }
@@ -131,7 +134,7 @@ private:
                 for(int i = 0; i < rtn_table_object.size(); i++)
                 {
                     std::vector < std::string > row = rtn_table_object[i];
-                    if(row[attr_pos] == value) //row[attr_pos] cond value
+                    if(trim(row[attr_pos]) == value) //row[attr_pos] cond value
                         // @todo cond 종류 다양화
                     {
                         temp_table_object.push_back(row);
